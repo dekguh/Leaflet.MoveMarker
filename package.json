@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/dekguh/L.MoveMarker/issues"
   },
-  "homepage": "https://github.com/dekguh/L.MoveMarker#readme"
+  "homepage": "https://github.com/dekguh/L.MoveMarker#readme",
+  "devDependencies": {
+    "eslint": "^8.28.0"
+  }
 }
