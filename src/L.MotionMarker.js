@@ -3,7 +3,7 @@
 /**
  * author: I Kadek Teguh Mahesa
  * github: https://github.com/dekguh
- * license: FREEEEEEE
+ * license: MIT
  * repo: https://github.com/dekguh/L.MoveMarker
  * copyright 2022
  */
@@ -16,10 +16,12 @@
 L.MotionMarker = L.Marker.extend({
   options: {
     animate: true,
+    duration: 5000, // in milliseconds
     followMarker: false,
+    hideMarker: false,
     rotateMarker: false,
-    duration: 5000, // IN MS
-    speed: 0, // IN KM
+    rotateAngle: 210, // face to east
+    speed: 0, // in km
   },
   
   /**
@@ -69,7 +71,8 @@ L.MotionMarker = L.Marker.extend({
       this._doAnimation();
     }
   
-    return;
+    // when first create and hideMarker is true
+    if(this.options.hideMarker) this.hideMarker(true);
   },
   
   /**
@@ -252,8 +255,9 @@ L.MotionMarker = L.Marker.extend({
      * @param {Boolean} hide 
      */
   hideMarker: function (hide) {
-    hide && this.setOpacity(0);
-    !hide && this.setOpacity(1);
+    if (hide) this.setOpacity(0);
+    else if (!hide) this.setOpacity(1);
+    this.options.hideMarker = hide;
   },
   
   /**
