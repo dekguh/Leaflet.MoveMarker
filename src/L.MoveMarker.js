@@ -21,6 +21,7 @@ L.MoveMarker = L.FeatureGroup.extend({
      * @link https://leafletjs.com/reference.html#polyline-option
      */
   optionsPolyline: {
+    animate: true,
     color: 'red',
     weight: 4,
     hidePolylines: false,
@@ -68,9 +69,6 @@ L.MoveMarker = L.FeatureGroup.extend({
         ...optionsGroup,
       }
     });
-  
-    // create lines
-    this._createLinesNoAnimate(latLngs);
   },
   
   onAdd: function (map) {
@@ -78,7 +76,7 @@ L.MoveMarker = L.FeatureGroup.extend({
     // set style
     !this.options.optionsPolyline.hidePolylines && this.setStyleOpacityLines();
   
-    // create marker
+    // create first init marker
     if (this._latLngs.length === 1) this._createMarker([
       this._latLngs[0],
     ]);
@@ -86,6 +84,14 @@ L.MoveMarker = L.FeatureGroup.extend({
       this._latLngs[this._latLngs.length - 2],
       this._latLngs[this._latLngs.length - 1],
     ]);
+ 
+    // create first init poyline
+    if(!this.options.optionsPolyline.animate) this.addMoreLine(this._latLngs[1], {
+      rotateAngle: this.optionsPolyline.rotateAngle, animatePolyline: false
+    });
+    if (this._latLngs.length === 2 && this.options.optionsPolyline.animate) this.addMoreLine(null, {
+      rotateAngle: this.optionsPolyline.rotateAngle, animatePolyline: this.optionsPolyline.animate
+    });
   },
   
   /**
@@ -123,20 +129,20 @@ L.MoveMarker = L.FeatureGroup.extend({
   
     // animate polyline
     this._currentInstanceline = L.motionLine(
-      [this._latLngs[latLngslength-1], latLng],
+      !latLng ? [this._latLngs[latLngslength-2], this._latLngs[latLngslength-1]] : [this._latLngs[latLngslength-1], latLng],
       {
         ...this.options.optionsPolyline,
         animate: !options?.animatePolyline ? false : true
       }
     );
     this.addLayer(this._currentInstanceline);
-    this._latLngs.push(latLng);
+    latLng ? this._latLngs.push(latLng) : this._latLngs.push(this._latLngs[1]);
   
     // hide/show polyline when on animate
     this.hidePolylines(this.options.optionsPolyline.hidePolylines);
   
     // animate marker
-    this._marker.moveTo(latLng, options);
+    this._marker.moveTo(latLng ? latLng : this._latLngs[this._latLngs.length - 1], options);
   },
   
   /**
