@@ -3,7 +3,7 @@
 /**
  * author: I Kadek Teguh Mahesa
  * github: https://github.com/dekguh
- * license: FREEEEEEE
+ * license: MIT
  * repo: https://github.com/dekguh/L.MoveMarker
  * copyright 2022
  */
@@ -16,10 +16,12 @@
 L.MotionMarker = L.Marker.extend({
   options: {
     animate: true,
+    duration: 5000, // in milliseconds
     followMarker: false,
+    hideMarker: false,
     rotateMarker: false,
-    duration: 5000, // IN MS
-    speed: 0, // IN KM
+    rotateAngle: 210, // face to east
+    speed: 0, // in km
   },
   
   /**
@@ -69,7 +71,8 @@ L.MotionMarker = L.Marker.extend({
       this._doAnimation();
     }
   
-    return;
+    // when first create and hideMarker is true
+    if(this.options.hideMarker) this.hideMarker(true);
   },
   
   /**
@@ -139,6 +142,41 @@ L.MotionMarker = L.Marker.extend({
       duration: followDuration + 1,
       animate: true,
     });
+  },
+  
+  /**
+   * this is used for enable/disable marker
+   * @param {boolean} value 
+   */
+  disableFollowMarker: function (value) {
+    this.options.followMarker = value;
+
+    if(!this._map) return;
+    if(!this._nextLatLng) return;
+
+    // current position at current time
+    var currentTimestamp = performance.now();
+    var elapsedTime = currentTimestamp - this._animStartTime;
+    var currentPosition = this._interpolatePosition(
+      this._prevLatLng,
+      this._nextLatLng,
+      this.options.duration,
+      elapsedTime
+    );
+    
+    if (value && !this._movingEnded) {
+      // move to current position at current time
+      this._map.setView([currentPosition.lat, currentPosition.lng], this._map.getZoom(), {animate: false});
+
+      // then run animate
+      var followDuration = this._animate ? this._duration/1000 : 0;
+      this._map.setView(this._nextLatLng, this._map.getZoom(), {
+        duration: followDuration + 1,
+        animate: true,
+      });
+    } else if (!value && !this._movingEnded) {
+      this._map.setView([currentPosition.lat, currentPosition.lng], this._map.getZoom(), {animate: false});
+    }
   },
   
   /**
@@ -252,8 +290,9 @@ L.MotionMarker = L.Marker.extend({
      * @param {Boolean} hide 
      */
   hideMarker: function (hide) {
-    hide && this.setOpacity(0);
-    !hide && this.setOpacity(1);
+    if (hide) this.setOpacity(0);
+    else if (!hide) this.setOpacity(1);
+    this.options.hideMarker = hide;
   },
   
   /**

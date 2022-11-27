@@ -2,7 +2,7 @@
 /**
  * author: I Kadek Teguh Mahesa
  * github: https://github.com/dekguh
- * license: FREEEEEEE
+ * license: MIT
  * repo: https://github.com/dekguh/L.MoveMarker
  * copyright 2022
  */
