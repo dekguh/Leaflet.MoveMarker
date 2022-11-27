@@ -145,6 +145,41 @@ L.MotionMarker = L.Marker.extend({
   },
   
   /**
+   * this is used for enable/disable marker
+   * @param {boolean} value 
+   */
+  disableFollowMarker: function (value) {
+    this.options.followMarker = value;
+
+    if(!this._map) return;
+    if(!this._nextLatLng) return;
+
+    // current position at current time
+    var currentTimestamp = performance.now();
+    var elapsedTime = currentTimestamp - this._animStartTime;
+    var currentPosition = this._interpolatePosition(
+      this._prevLatLng,
+      this._nextLatLng,
+      this.options.duration,
+      elapsedTime
+    );
+    
+    if (value && !this._movingEnded) {
+      // move to current position at current time
+      this._map.setView([currentPosition.lat, currentPosition.lng], this._map.getZoom(), {animate: false});
+
+      // then run animate
+      var followDuration = this._animate ? this._duration/1000 : 0;
+      this._map.setView(this._nextLatLng, this._map.getZoom(), {
+        duration: followDuration + 1,
+        animate: true,
+      });
+    } else if (!value && !this._movingEnded) {
+      this._map.setView([currentPosition.lat, currentPosition.lng], this._map.getZoom(), {animate: false});
+    }
+  },
+  
+  /**
      * update prev lat lng
      */
   _updatePrevLatLng: function () {
