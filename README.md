@@ -32,10 +32,11 @@ import 'l.movemarker'
 
 ### Demo
 
-| demo                                                                           | description                                                                                      |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| [basic demo](https://codesandbox.io/s/l-movemarker-basic-usage-fkdvty)         | basic demo is a simple usage example                                                             |
-| [real case demo](https://codesandbox.io/s/l-movemarker-real-case-usage-916l5u) | an example of a real L.MoveMarker implementation using multiple markers and the lat lng mock API |
+| demo                                                                                 | description                                                                                      |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| [basic demo (codesandbox)](https://codesandbox.io/s/l-movemarker-basic-usage-fkdvty) | basic demo is a simple usage example                                                             |
+| [basic demo (github)](https://github.com/dekguh/basic-usage-leaflet-movemarker)      | basic demo is a simple usage example                                                             |
+| [real case demo](https://codesandbox.io/s/l-movemarker-real-case-usage-916l5u)       | an example of a real L.MoveMarker implementation using multiple markers and the lat lng mock API |
 
 ### First Call
 
@@ -159,6 +160,14 @@ this is used to disable/enable the current polyline which is moving and this met
 
 ```js
 instance.getCurrentPolyline().disableAnimate(true)
+```
+
+##### stop
+
+This is used to end the animation of the marker and polyline that are currently in moving animation and this method not called from `getCurrentPolyline`, example usage method `stop()`
+
+```js
+instance.stop()
 ```
 
 ### Report Issue/Question
