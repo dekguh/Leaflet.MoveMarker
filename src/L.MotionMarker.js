@@ -153,6 +153,7 @@ L.MotionMarker = L.Marker.extend({
 
     if(!this._map) return;
     if(!this._nextLatLng) return;
+    if(this._movingEnded) return;
 
     // current position at current time
     var currentTimestamp = performance.now();
@@ -290,6 +291,7 @@ L.MotionMarker = L.Marker.extend({
      * @param {Boolean} hide 
      */
   hideMarker: function (hide) {
+    if(hide === this.options.hideMarker) return;
     if (hide) this.setOpacity(0);
     else if (!hide) this.setOpacity(1);
     this.options.hideMarker = hide;
@@ -300,6 +302,8 @@ L.MotionMarker = L.Marker.extend({
      * @param {Boolean} value 
      */  
   disableAnimate: function (value) {
+    if(value === this._animate) return;
+    
     var currentTimestamp = performance.now();
     var elapsedTime = currentTimestamp - this._animStartTimeStamp;
   
