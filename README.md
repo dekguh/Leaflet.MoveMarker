@@ -66,7 +66,7 @@ the `L.MoveMarker` will return the instance layer `L.FeatureGroup` and it inside
 | followMarker | boolean | false         | this will activate the follow marker feature, when the marker moves, the screen will follow the movement of the marker    |
 | hideMarker   | boolean | true          | hide marker from map, you can also show/hide with method hideMarker(boolean), for more detail see on method documentation |
 | rotateMarker | boolean | false         | this will activate the rotation marker and props rotateAngle will be required                                             |
-| rotateAngle  | number  | 210           | 0 to 360 degrees                                                                                                          |
+| rotateAngle  | number  | 0             | 0 to 360 degrees                                                                                                          |
 | speed        | number  | 0             | if the speed value is filled then the duration props will not work and the value unit is km/h                             |
 
 You can also fill in the default options marker from the leaflet marker [options marker](https://leafletjs.com/reference.html#marker-option)
