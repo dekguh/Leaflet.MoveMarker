@@ -20,7 +20,7 @@ L.MotionMarker = L.Marker.extend({
     followMarker: false,
     hideMarker: false,
     rotateMarker: false,
-    rotateAngle: 210, // face to east
+    rotateAngle: 0, // face to east
     speed: 0, // in km
   },
   
@@ -53,6 +53,7 @@ L.MotionMarker = L.Marker.extend({
     // init rotate marker
     if(this._rotateMarker) {
       this._rotateAngle = this.options.rotateAngle;
+      this._tempRotateAngle = 0; // default is 210 deg
     }
   },
   
@@ -125,7 +126,7 @@ L.MotionMarker = L.Marker.extend({
     }
   
     // check if rotateMarker active
-    if(this._rotateMarker) {
+    if(this._rotateMarker && this._rotateAngle !== options.rotateAngle) {
       this._rotateAngle = options.rotateAngle;
     }
   
@@ -211,6 +212,8 @@ L.MotionMarker = L.Marker.extend({
      * heading icon must facing to east/right
      */
   _doRotation: function () {
+    if(this._rotateAngle === this._tempRotateAngle) return;
+
     if(this.options.rotateMarker) {
       this._icon.childNodes[0].style.transformOrigin = 'center';
   
@@ -218,6 +221,8 @@ L.MotionMarker = L.Marker.extend({
       this._icon.childNodes[0].style.transform = 'rotate(' + this._rotateAngle + 'deg)';
       this._icon.childNodes[0].style.transition = 'transform .2s';
     }
+
+    this._tempRotateAngle = this._rotateAngle;
   },
   
   _doAnimation: function () {
