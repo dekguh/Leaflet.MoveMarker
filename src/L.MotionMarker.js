@@ -149,7 +149,7 @@ L.MotionMarker = L.Marker.extend({
    * this is used for enable/disable marker
    * @param {boolean} value 
    */
-  disableFollowMarker: function (value) {
+  activeFollowMarker: function (value) {
     this.options.followMarker = value;
 
     if(!this._map) return;

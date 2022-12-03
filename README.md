@@ -130,12 +130,12 @@ this is used to enable/disable the marker and this method called from `getMarker
 instance.getMarker().disableAnimate(true)
 ```
 
-##### disableFollowMarker
+##### activeFollowMarker
 
-this used to disable/enable screen follow the marker moving and this method called from `getMarker`, example usage method `getMarker().disableFollowMarker(boolean)`
+this used to disable/enable screen follow the marker moving and this method called from `getMarker`, example usage method `getMarker().activeFollowMarker(boolean)`
 
 ```js
-instance.getMarker().disableFollowMarker(true)
+instance.getMarker().activeFollowMarker(true)
 ```
 
 ##### getCurrentPolyline
