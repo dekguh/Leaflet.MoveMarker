@@ -36,7 +36,7 @@ import 'l.movemarker'
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | [basic demo (codesandbox)](https://codesandbox.io/s/l-movemarker-basic-usage-fkdvty) | basic demo is a simple usage example                                                             |
 | [basic demo (github)](https://github.com/dekguh/basic-usage-leaflet-movemarker)      | basic demo is a simple usage example                                                             |
-| [real case demo](https://codesandbox.io/s/l-movemarker-real-case-usage-916l5u)       | an example of a real L.MoveMarker implementation using multiple markers and the lat lng mock API |
+| [real case demo](https://github.com/dekguh/real-usage-leaflet-movemarker)            | an example of a real L.MoveMarker implementation using multiple markers and the lat lng mock API |
 
 ### First Call
 
@@ -122,12 +122,12 @@ this is used to hide/show the marker and this method called from `getMarker`, ex
 instance.getMarker().hideMarker(true)
 ```
 
-##### disableAnimate (marker)
+##### activeAnimate (marker)
 
-this is used to enable/disable the marker and this method called from `getMarker`, example usage method `getMarker().disableAnimate(boolean)`
+this is used to enable/disable the marker and this method called from `getMarker`, example usage method `getMarker().activeAnimate(boolean)`
 
 ```js
-instance.getMarker().disableAnimate(true)
+instance.getMarker().activeAnimate(true)
 ```
 
 ##### activeFollowMarker
@@ -154,12 +154,12 @@ this is used to hide/show the polylines and this method not called from `getCurr
 instance.hidePolylines(true)
 ```
 
-##### disableAnimate (polyline)
+##### activeAnimate (polyline)
 
-this is used to disable/enable the current polyline which is moving and this method called from `getCurrentPolyline`, example usage method `getCurrentPolyline().disableAnimate(boolean)`
+this is used to disable/enable the current polyline which is moving and this method called from `getCurrentPolyline`, example usage method `getCurrentPolyline().activeAnimate(boolean)`
 
 ```js
-instance.getCurrentPolyline().disableAnimate(true)
+instance.getCurrentPolyline().activeAnimate(true)
 ```
 
 ##### stop
