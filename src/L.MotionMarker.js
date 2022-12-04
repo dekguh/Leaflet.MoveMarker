@@ -152,6 +152,7 @@ L.MotionMarker = L.Marker.extend({
   activeFollowMarker: function (value) {
     this.options.followMarker = value;
 
+    // bypass
     if(!this._map) return;
     if(!this._nextLatLng) return;
     if(this._movingEnded) return;
@@ -176,8 +177,6 @@ L.MotionMarker = L.Marker.extend({
         duration: followDuration + 1,
         animate: true,
       });
-    } else if (!value && !this._movingEnded) {
-      this._map.setView([currentPosition.lat, currentPosition.lng], this._map.getZoom(), {animate: false});
     }
   },
   
@@ -306,7 +305,7 @@ L.MotionMarker = L.Marker.extend({
      * disable animate and when on animate, move to next lat lng
      * @param {Boolean} value 
      */  
-  disableAnimate: function (value) {
+  activeAnimate: function (value) {
     if(value === this._animate) return;
     
     var currentTimestamp = performance.now();

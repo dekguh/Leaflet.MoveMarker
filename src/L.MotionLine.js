@@ -141,7 +141,7 @@ L.MotionLine = L.Polyline.extend({
      * disable animate and when on animate then stop animate
      * @param {Boolean} value 
      */  
-  disableAnimate: function (value) {
+  activeAnimate: function (value) {
     if (value === this._animate) return;
 
     var currentTimestamp = performance.now();
