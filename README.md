@@ -172,7 +172,7 @@ instance.stop()
 
 ### Report Issue/Question
 
-if you have a question about `L.MoveMarker` or if you found a bug, you can make a issue, more detail how to make a report/question [here](https://github.com/dekguh/L.MoveMarker/issues/4)
+if you have a question about `L.MoveMarker` or if you found a bug, you can make a issue, more detail how to make a report/question [here](https://github.com/dekguh/Leaflet.MoveMarker/issues/4)
 
 thanks,
 kadek.
