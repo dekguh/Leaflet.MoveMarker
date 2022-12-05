@@ -1,6 +1,6 @@
 {
   "name": "l.movemarker",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "L.MoveMarker is leaflet plugin used to create moving marker animation and polyline animation",
   "main": "src/L.MoveMarker.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dekguh/L.MoveMarker.git"
+    "url": "git+https://github.com/dekguh/Leaflet.MoveMarker.git"
   },
   "keywords": [
     "leaflet",
@@ -21,9 +21,9 @@
   "author": "I Kadek Teguh Mahesa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dekguh/L.MoveMarker/issues"
+    "url": "https://github.com/dekguh/Leaflet.MoveMarker/issues"
   },
-  "homepage": "https://github.com/dekguh/L.MoveMarker#readme",
+  "homepage": "https://github.com/dekguh/Leaflet.MoveMarker#readme",
   "devDependencies": {
     "eslint": "^8.28.0"
   }
