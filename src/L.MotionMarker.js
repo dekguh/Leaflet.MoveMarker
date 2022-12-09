@@ -296,7 +296,6 @@ L.MotionMarker = L.Marker.extend({
      */
   hideMarker: function (hide) {
     // using display is better for performance than opacity
-    if(hide === this.options.hideMarker) return;
     if (hide) this._icon.style.display = 'none';
     else if (!hide) this._icon.style.display = 'block';
     this.options.hideMarker = hide;
