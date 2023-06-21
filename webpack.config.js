@@ -8,4 +8,5 @@ module.exports = {
     filename: 'L.MoveMarker.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  mode: 'none'
 };
