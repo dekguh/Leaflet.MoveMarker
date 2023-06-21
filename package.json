@@ -1,6 +1,6 @@
 {
   "name": "l.movemarker",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "L.MoveMarker is leaflet plugin used to create moving marker animation and polyline animation",
   "main": "dist/L.MoveMarker.js",
   "scripts": {
