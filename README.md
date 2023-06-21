@@ -47,8 +47,8 @@ if you just fill lat lng without nextLatLng, it will still work and will only cr
 ```js
 const instance = L.MoveMarker(
   [[prevLatLng], [nextLatLng]],
-  markerOptions,
   polylineOptions,
+  markerOptions,
   featureGroupOtions
 )
 ```
@@ -56,20 +56,6 @@ const instance = L.MoveMarker(
 the `L.MoveMarker` will return the instance layer `L.FeatureGroup` and it inside have many layers L.MotionLine and one layer L.MotionMarker.
 
 ### Options
-
-#### Marker Options
-
-| props        | type    | default value | description                                                                                                               |
-| ------------ | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| animate      | boolean | true          | this will activate the moving animation effect on the marker                                                              |
-| duration     | number  | 5000          | value in milliseconds, we recommended duration the marker and the polyline must same                                      |
-| followMarker | boolean | false         | this will activate the follow marker feature, when the marker moves, the screen will follow the movement of the marker    |
-| hideMarker   | boolean | true          | hide marker from map, you can also show/hide with method hideMarker(boolean), for more detail see on method documentation |
-| rotateMarker | boolean | false         | this will activate the rotation marker and props rotateAngle will be required                                             |
-| rotateAngle  | number  | 0             | 0 to 360 degrees                                                                                                          |
-| speed        | number  | 0             | if the speed value is filled then the duration props will not work and the value unit is km/h                             |
-
-You can also fill in the default options marker from the leaflet marker [options marker](https://leafletjs.com/reference.html#marker-option)
 
 ### Polyline Options
 
@@ -84,6 +70,20 @@ You can also fill in the default options marker from the leaflet marker [options
 | maxLengthLines   | number  | 3             | This prop used to limit the number of polylines and if it exceeds the limit then the first polyline will be deleted             |
 
 You can also fill in the default options polyline from the leaflet polyline [options polyline](https://leafletjs.com/reference.html#polyline-option)
+
+#### Marker Options
+
+| props        | type    | default value | description                                                                                                               |
+| ------------ | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| animate      | boolean | true          | this will activate the moving animation effect on the marker                                                              |
+| duration     | number  | 5000          | value in milliseconds, we recommended duration the marker and the polyline must same                                      |
+| followMarker | boolean | false         | this will activate the follow marker feature, when the marker moves, the screen will follow the movement of the marker    |
+| hideMarker   | boolean | true          | hide marker from map, you can also show/hide with method hideMarker(boolean), for more detail see on method documentation |
+| rotateMarker | boolean | false         | this will activate the rotation marker and props rotateAngle will be required                                             |
+| rotateAngle  | number  | 0             | 0 to 360 degrees                                                                                                          |
+| speed        | number  | 0             | if the speed value is filled then the duration props will not work and the value unit is km/h                             |
+
+You can also fill in the default options marker from the leaflet marker [options marker](https://leafletjs.com/reference.html#marker-option)
 
 ### Feature Group Options
 
